@@ -1,3 +1,10 @@
+
+
+import SimpleLightbox from "simplelightbox";
+
+import "simplelightbox/dist/simple-lightbox.min.css";
+new SimpleLightbox('.some-element a', { /* options */ });
+
 let formData = {
   email: '',
   message: '',
