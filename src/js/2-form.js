@@ -1,10 +1,4 @@
 
-
-import SimpleLightbox from "simplelightbox";
-
-import "simplelightbox/dist/simple-lightbox.min.css";
-new SimpleLightbox('.some-element a', { /* options */ });
-
 let formData = {
   email: '',
   message: '',
@@ -12,22 +6,15 @@ let formData = {
 
 const form = document.querySelector('.feedback-form');
 
-function updateData(e) {
-  const { name, value } = e.target;
-  formData[name] = value.trim();
-  localStorage.setItem('feedback-form-state', JSON.stringify(formData));
-}
+form.addEventListener('imput', () => {
+  formData.email = input.value.trim();
+  formData.message = text.value.trim();
+  localStorage.setItem('feedback-form-atate', JSON.stringify(formData));
+})
 
 form.addEventListener('input', updateData);
 
-document.addEventListener('DOMContentLoaded', function () {
-  const storedData = JSON.parse(localStorage.getItem('feedback-form-state'));
-  if (storedData) {
-    formData = storedData;
-    document.querySelector('[name="email"]').value = formData.email;
-    document.querySelector('[name="message"]').value = formData.message;
-  }
-});
+
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
