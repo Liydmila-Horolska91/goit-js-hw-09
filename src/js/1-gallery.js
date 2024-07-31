@@ -87,42 +87,7 @@ const galleryMarkup = images.map(({ preview, original, description }) => {
 `;
 }).join("");
 
-//  galleryContainer.innerHTML = galleryMarkup;
-
-// galleryContainer.addEventListener("click", function (event) {
-//     event.preventDefault();
-
-//     if (event.target.nodeName !== "IMG" || !event.target.classList.contains("gallery-image")) {
-//         return;
-//     }
-
-//     const largeImg = event.target.dataset.source;
-//     const description = event.target.alt;
-
-
-//     const instance = basicLightbox.create(
-//       `<div class="modal">
-//       <img src="${largeImg}" alt="${description}">
-//     </div>`
-//     );
-
-//     instance.show();
-// });
-
-// galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarkup);
-
-// import SimpleLightbox from 'simplelightbox';
-// import 'simplelightbox/dist/simple-lightbox.min.css';
-
-// document.addEventListener('DOMContentLoaded', function () {
-//   const gallery = new SimpleLightbox('.gallery a', {
-//     captionsData: 'alt',
-//     captionDelay: 250,
-//   });
-// });
-
-
- galleryContainer.innerHTML = galleryMarkup;
+galleryContainer.innerHTML = galleryMarkup;
 
 galleryContainer.addEventListener("click", function (event) {
     event.preventDefault();
@@ -142,16 +107,4 @@ galleryContainer.addEventListener("click", function (event) {
     );
 
     instance.show();
-});
-
-galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarkup);
-
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
-
-document.addEventListener('DOMContentLoaded', function () {
-  const gallery = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-  });
 });
