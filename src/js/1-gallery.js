@@ -1,8 +1,7 @@
 
 import SimpleLightbox from "simplelightbox";
 // fghjk
-import "simplelightbox/dist/simple-lightbox.min.css";
-new SimpleLightbox('.some-element a', { /* options */ });
+
 const images = [
   {
     preview:
@@ -86,25 +85,3 @@ const galleryMarkup = images.map(({ preview, original, description }) => {
 </li>
 `;
 }).join("");
-
-galleryContainer.innerHTML = galleryMarkup;
-
-galleryContainer.addEventListener("click", function (event) {
-    event.preventDefault();
-
-    if (event.target.nodeName !== "IMG" || !event.target.classList.contains("gallery-image")) {
-        return;
-    }
-
-    const largeImg = event.target.dataset.source;
-    const description = event.target.alt;
-
-
-    const instance = basicLightbox.create(
-      `<div class="modal">
-      <img src="${largeImg}" alt="${description}">
-    </div>`
-    );
-
-    instance.show();
-});
