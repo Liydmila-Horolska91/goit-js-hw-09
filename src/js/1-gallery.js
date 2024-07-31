@@ -1,6 +1,6 @@
 
 import SimpleLightbox from "simplelightbox";
-
+// fghjk
 import "simplelightbox/dist/simple-lightbox.min.css";
 new SimpleLightbox('.some-element a', { /* options */ });
 const images = [
