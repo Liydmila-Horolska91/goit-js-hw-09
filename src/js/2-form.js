@@ -1,22 +1,27 @@
-
 let formData = {
   email: '',
   message: '',
 };
 
 const form = document.querySelector('.feedback-form');
+const emailInput = form.querySelector('input[name="email"]');
+const messageInput = form.querySelector('textarea[name="message"]');
 
-form.addEventListener('imput', () => {
-  formData.email = input.value.trim();
-  formData.message = text.value.trim();
-  localStorage.setItem('feedback-form-atate', JSON.stringify(formData));
-})
+window.addEventListener('load', () => {
+  const savedData = localStorage.getItem('feedback-form-state');
+  if (savedData) {
+    formData = JSON.parse(savedData);
+    emailInput.value = formData.email;
+    messageInput.value = formData.message;
+  }
+});
 
-form.addEventListener('input', updateData);
+form.addEventListener('input', (e) => {
+  formData[e.target.name] = e.target.value.trim();
+  localStorage.setItem('feedback-form-state', JSON.stringify(formData));
+});
 
-
-
-form.addEventListener('submit', function (e) {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   if (formData.email.trim() === '' || formData.message.trim() === '') {
@@ -28,7 +33,5 @@ form.addEventListener('submit', function (e) {
 
   localStorage.removeItem('feedback-form-state');
   formData = { email: '', message: '' };
-
-  document.querySelector('[name="email"]').value = '';
-  document.querySelector('[name="message"]').value = '';
+  form.reset();
 });
